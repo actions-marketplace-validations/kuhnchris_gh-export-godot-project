@@ -1,0 +1,37 @@
+name: 'exportGodot'
+description: 'Export godot project'
+inputs:
+  project-directory:
+    description: "Base directory relativ to the git root"
+    required: true
+    default: "./"  
+  export-debug: 
+    description: 'Export with "debug" symbols'
+    required: false
+    default: ""
+  export-pack:
+    description: "Export just the .pck/.zip file"
+    required: false
+    default: ""
+  export-platform:
+    description: "Export for platform (.pck + .exe)"
+    required: false
+    default: "y"
+  platform:
+    description: "Platform to export for (from export_presets.cfg)"
+    required: true
+    default: "Linux/X11"
+  executable-name:
+    description: "Name of executable (for windows append '.exe')"
+    required: true
+    default: "game"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.project-directory }}
+    - ${{ inputs.export-debug }}
+    - ${{ inputs.export-pack }}
+    - ${{ inputs.export-platform }}
+    - ${{ inputs.platform }}
+    - ${{ inputs.executable-name }}
