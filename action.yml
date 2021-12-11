@@ -1,5 +1,8 @@
-name: 'exportGodot'
-description: 'Export godot project'
+name: 'gh-export-godot-project'
+branding:
+  icon: 'external-link'  
+  color: 'orange'
+description: 'Runs godot export configuration'
 inputs:
   project-directory:
     description: "Base directory relativ to the git root"
