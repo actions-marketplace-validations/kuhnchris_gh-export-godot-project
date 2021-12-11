@@ -28,13 +28,24 @@ inputs:
     description: "Name of executable (for windows append '.exe')"
     required: true
     default: "game"
+  godot-version:
+    description: "Version of godot to use (docker)"
+    required: true
+    default: '3.4'
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.project-directory }}
-    - ${{ inputs.export-debug }}
-    - ${{ inputs.export-pack }}
-    - ${{ inputs.export-platform }}
-    - ${{ inputs.platform }}
-    - ${{ inputs.executable-name }}
+  using: "composite"
+  steps:
+    - run: chmod +x ${{ github.action_path }}/action.sh
+      shell: bash
+    - run: ${{ github.action_path }}/action.sh
+      shell: bash
+      env:
+        GODOT_VERSION: ${{ inputs.godot-version }}
+        ACTION_PATH: ${{ github.action_path }}
+        PROJECT_DIRECTORY: ${{ inputs.project-directory }}
+        EXPORT_DEBUG: ${{ inputs.export-debug }}
+        EXPORT_PACK: ${{ inputs.export-pack }}
+        EXPORT_PLATFORM: ${{ inputs.export-platform }}
+        PLATFORM: ${{ inputs.platform }}
+        EXECUTABLE_NAME: ${{ inputs.executable-name }}
