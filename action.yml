@@ -32,6 +32,9 @@ inputs:
     description: "Version of godot to use (docker)"
     required: true
     default: '3.4'
+  base-docker:
+    description: "base docker container url"
+    default: 'ghcr.io/kuhnchris/godot-github-ci-actions'
 
 runs:
   using: "composite"
@@ -49,3 +52,4 @@ runs:
         EXPORT_PLATFORM: ${{ inputs.export-platform }}
         PLATFORM: ${{ inputs.platform }}
         EXECUTABLE_NAME: ${{ inputs.executable-name }}
+        BASE_DOCKER: ${{inputs.base-docker}}
