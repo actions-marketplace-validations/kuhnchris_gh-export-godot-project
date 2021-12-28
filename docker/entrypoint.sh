@@ -3,6 +3,7 @@
 echo "::group::Debugging information:"
 echo "workdir:"
 pwd
+ls -al .
 echo "os info:"
 uname -a
 echo "Godot executable lib dependencies"
