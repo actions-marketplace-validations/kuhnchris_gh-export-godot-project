@@ -2,13 +2,13 @@
 #set -v -x
 TAG=gh-export-godot-project
 
-if [ "${BASE_DOCKER}x" -eq "x" ]; then
+if [ "${BASE_DOCKER}x" == "x" ]; then
     echo "::error::misconfiguration! base docker image not set!"
     exit 99
 fi
 
 result=`docker manifest inspect ${{ BASE_DOCKER }}:${{ GODOT_VERSION }} >/dev/null 2>&1; echo $?`
-if [ "$result" -ne "0" ]; then
+if [ "${result}" -ne "0" ]; then
     echo "::error::docker image with tag (godot version) ${{ GODOT_VERSION }} does not exist within ${{ BASE_DOCKER }}"
     exit 5
 fi
