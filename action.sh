@@ -1,5 +1,5 @@
-#!/bin/sh
-#set -v -x
+#!/bin/bash
+set -v -x
 TAG=gh-export-godot-project
 
 if [ "${BASE_DOCKER}x" == "x" ]; then
