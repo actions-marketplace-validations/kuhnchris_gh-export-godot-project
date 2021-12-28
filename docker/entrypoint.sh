@@ -85,6 +85,9 @@ chmod +x "${execs[0]}"
 echo "::group::running the engine with following parameters: ${godot_args[*]}"
 eval "${execs[0]}" ${godot_args[*]} > "${logfile}" 2>&1 
 echo "::endgroup::"
+echo "::group::Output of godot..."
+cat "${logfile}"
+echo "::endgroup::"
 echo "::group::ziping projects..."
 eval "${ziping}" 2>&1 
 echo "::endgroup::"
