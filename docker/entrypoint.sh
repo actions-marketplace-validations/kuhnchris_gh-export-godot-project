@@ -1,5 +1,5 @@
 #!/bin/bash
-set -v -x
+#set -v -x
 echo "::group::Debugging information:"
 echo "workdir:"
 pwd
